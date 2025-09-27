@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Garima 🎂💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<style>
+:root{--pink:#ff7ab6;--rose:#ff4d94;--lightpink:#ffe6f2;--pastelpurple:#f6e6ff;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--lightpink),var(--pastelpurple));overflow-x:hidden;scroll-behavior:smooth;}
+section{height:100vh;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;padding:20px;}
+h2{font-family:'Poppins',sans-serif;color:var(--rose);font-size:2rem;margin-bottom:15px;text-align:center;}
+p{font-family:'Poppins',sans-serif;font-size:1.1rem;line-height:1.6rem;text-align:center;max-width:90%;margin:auto;}
+.cake-card{position:relative;width:260px;margin-bottom:20px;}
+.cake-layer{width:100%;height:60px;border-radius:20px;background:linear-gradient(180deg,#ffd6e8,#ffb3d9);margin-bottom:-10px;box-shadow:0 6px 20px rgba(0,0,0,0.1);}
+.frosting{position:absolute;top:-15px;width:90%;height:20px;background:linear-gradient(180deg,#fff,#ffd6eb);border-radius:20px;left:50%;transform:translateX(-50%);}
+.sprinkles{position:absolute;top:-5px;left:50%;transform:translateX(-50%);display:flex;gap:5px;flex-wrap:wrap;width:90%;justify-content:center;}
+.sprinkle{width:6px;height:3px;border-radius:50%;background:linear-gradient(90deg,#fff7a0,#ff4d94);}
+.candle{position:absolute;top:-50px;left:50%;transform:translateX(-50%);cursor:pointer;}
+.candle .num{font-family:'Poppins',sans-serif;font-size:60px;background:linear-gradient(180deg,#fff,#ffd6eb);padding:5px 15px;border-radius:12px;color:#b22b66;box-shadow:0 6px 20px rgba(0,0,0,0.1);}
+.candle .flame{width:20px;height:25px;background:radial-gradient(circle at 50% 50%,#fff5a8,#ffb36a,#ff4d94);border-radius:50%;position:absolute;top:-28px;left:50%;transform:translateX(-50%);filter:drop-shadow(0 5px 8px rgba(255,80,150,0.3));animation:flicker 0.2s infinite;}
+@keyframes flicker{0%{transform:translateX(-50%) scale(1);}50%{transform:translateX(-50%) scale(0.9);}100%{transform:translateX(-50%) scale(1);}}
+.doodle{width:120px;height:120px;background:url('assets/doodle.png') no-repeat center/contain;animation:float 2s ease-in-out infinite;}
+@keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-10px);}100%{transform:translateY(0);}}
+.shower{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;}
+.shower span{position:absolute;font-size:24px;animation:fall linear infinite;user-select:none;}
+@keyframes fall{0%{transform:translateY(-50px) rotate(0deg);}100%{transform:translateY(110vh) rotate(360deg);}}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:15px 0;}
+.gallery img{width:100%;border-radius:15px;box-shadow:0 6px 15px rgba(0,0,0,0.1);}
+#gameCanvas{width:90%;max-width:400px;height:320px;border-radius:20px;background:linear-gradient(180deg,#ffe6f2,#ffd6e8);}
+.basket{width:100px;height:50px;background:linear-gradient(180deg,#ffd6e8,#ffb3d9);border-radius:12px;position:relative;margin-top:-60px;}
+.kittens-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:15px 0;}
+.kitten-card img{width:100%;border-radius:12px;box-shadow:0 6px 15px rgba(0,0,0,0.1);}
+.kitten-card p{text-align:center;font-size:0.9rem;color:#ff4d94;font-family:'Dancing Script',cursive;}
+.kitten-special img{width:80%;max-width:350px;margin:auto;display:block;border-radius:20px;box-shadow:0 6px 15px rgba(0,0,0,0.1);}
+.glitter-text{font-size:1.8rem;background:linear-gradient(90deg,#ff0080,#ff66b2,#ffb3d9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glitter 2s linear infinite;text-align:center;margin-top:12px;}
+@keyframes glitter{0%{filter:drop-shadow(0 0 2px #ff66b2);}50%{filter:drop-shadow(0 0 6px #ff1493);}100%{filter:drop-shadow(0 0 2px #ff66b2);}}
+.final-line p{font-size:1.5rem;color:#ff4d94;line-height:1.6rem;text-align:center;}
+</style>
+</head>
+<body>
+
+<div class="shower" id="shower"></div>
+
+<section id="cake">
+<h2>🎂 Happy Birthday Garu!</h2>
+<div class="cake-card">
+  <div class="frosting"></div>
+  <div class="sprinkles"><span class="sprinkle"></span><span class="sprinkle"></span><span class="sprinkle"></span></div>
+  <div class="cake-layer"></div>
+  <div class="cake-layer"></div>
+  <div class="candle" id="candle">
+    <div class="num">19</div>
+    <div class="flame"></div>
+  </div>
+</div>
+<div class="doodle"></div>
+<p class="message">Tap the candle or blow into your mic to celebrate! 💨</p>
+</section>
+
+<section id="message">
+<h2>Your Special Message</h2>
+<p>
+Garima, Happy birthday to the girl closest to my heart. A girl for whom I can do anything on her command. I love her deeply that I can't unlove her in this lifetime. She's just a kiddo with dangerous anger issues but she's cute and pretty af, so that counterbalances it. Garima, enjoy your bday, I love you and will be there by your side till I exist in this realm. Without you there's no sense to exist. You're the moon in my life guiding me through the dark. Always be happy and healthy. Lots of love to you 💞<br><strong>Happy Birthday Garu (I remember everything you say)</strong>
+</p>
+</section>
+
+<section id="photos">
+<h2>Memories & Music 🎵</h2>
+<div class="gallery">
+<img src="assets/photo1.jpg" alt="Photo1">
+<img src="assets/photo2.jpg" alt="Photo2">
+<img src="assets/photo3.jpg" alt="Photo3">
+<img src="assets/photo4.jpg" alt="Photo4">
+</div>
+<audio controls autoplay loop>
+<source src="assets/iris.mp3" type="audio/mpeg">
+</audio>
+</section>
+
+<section id="game">
+<h2>Catch the Hearts 💖</h2>
+<canvas id="gameCanvas"></canvas>
+<div class="basket"></div>
+<p style="text-align:center;margin-top:10px;">Score: <span id="score">0</span></p>
+</section>
+
+<section id="kittens">
+<h2>This is Us 🐾</h2>
+<div class="kittens-grid">
+<div class="kitten-card"><img src="assets/photo10.jpg"><p>I am Batman yk 🦇</p></div>
+<div class="kitten-card"><img src="assets/photo11.jpg"><p>This you always bullying me huh 😆</p></div>
+<div class="kitten-card"><img src="assets/photo12.jpg"><p>As usual me pleading for forgiveness 🙏</p></div>
+<div class="kitten-card"><img src="assets/photo13.jpg"><p>Me losing 😔</p></div>
+</div>
+<div class="kitten-special">
+<img src="assets/photo14.jpg">
+<p class="glitter-text">✨ THIS IS HOW I SEE YOU ✨</p>
+</div>
+</section>
+
+<section id="final">
+<h2>💖 Forever Yours</h2>
+<p class="final-line">GARIMA I WILL ALWAYS BE YOUR BIGGEST SUPPORTER AND WILL BE BY YOUR SIDE NO MATTER WHAT!! 💞</p>
+</section>
+
+<script>
+// Floating doodle & candle
+gsap.to('.flame',{scale:1.1,duration:0.2,repeat:-1,yoyo:true});
+gsap.to('.doodle',{y:-10,duration:2,repeat:-1,yoyo:true});
+
+// Shower helper
+function triggerShower(){
+  const shower = document.getElementById('shower');
+  for(let i=0;i<50;i++){
+    const span = document.createElement('span');
+    span.style.left=Math.random()*100+'vw';
+    span.style.fontSize=(12+Math.random()*12)+'px';
+    span.innerText = Math.random()<0.5?'💖':'🌸';
+    shower.appendChild(span);
+    gsap.to(span,{y:'110vh',rotation:Math.random()*720,duration:2+Math.random()*2, ease:'power1.in', onComplete:()=>span.remove()});
+  }
+}
+
+// Candle tap
+const candle = document.getElementById('candle');
+candle.addEventListener('click',()=>{
+  candle.querySelector('.flame').style.display='none';
+  triggerShower();
+});
+
+// Heart game with confetti
+const canvas = document.getElementById('gameCanvas');
+canvas.width = canvas.offsetWidth;
+canvas.height = canvas.offsetHeight;
+const ctx = canvas.getContext('2d');
+const heartImg = new Image();
+heartImg.src = 'assets/heart.png';
+let hearts = [];
+for(let i=0;i<15;i++){hearts.push({x:Math.random()*canvas.width,y:Math.random()*-200,speed:1+Math.random()*2});}
+let basket={x:canvas.width/2-50,y:canvas.height-60,width:100,height:50};
+let score=0;
+let confettiParticles=[];
+function createConfetti(x,y){
+  for(let i=0;i<10;i++){
+    confettiParticles.push({x:x,y:y,vx:(Math.random()-0.5)*4,vy:Math.random()*-4-2,color:`hsl(${Math.random()*360},80%,60%)`,alpha:1,size:5+Math.random()*5});
+  }
+}
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  hearts.forEach((h,index)=>{
+    ctx.drawImage(heartImg,h.x,h.y,40,40);
+    h.y+=h.speed;
+    if(h.y>canvas.height){h.y=-50;h.x=Math.random()*canvas.width;}
+    if(h.y+40>basket.y && h.x+40>basket.x && h.x<basket.x+basket.width){
+      score++;
+      document.getElementById('score').innerText=score;
+      createConfetti(h.x+20,h.y+20);
+      h.y=-50; h.x=Math.random()*canvas.width;
+    }
+  });
+  ctx.fillStyle='#ffb3d9';
+  ctx.fillRect(basket.x,basket.y,basket.width,basket.height);
+  confettiParticles.forEach((p,i)=>{
+    ctx.fillStyle=p.color;ctx.globalAlpha=p.alpha;
+    ctx.fillRect(p.x,p.y,p.size,p.size);
+    ctx.globalAlpha=1;
+    p.x+=p.vx;p.y+=p.vy;p.vy+=0.1;p.alpha-=0.02;
+    if(p.alpha<=0) confettiParticles.splice(i,1);
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+document.addEventListener('touchmove', e=>{basket.x=e.touches[0].clientX-basket.width/2;});
+document.addEventListener('mousemove', e=>{basket.x=e.clientX-basket.width/2;});
+</script>
+</body>
+</html>
